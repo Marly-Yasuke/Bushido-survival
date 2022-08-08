@@ -1,3 +1,28 @@
+@font-face {
+    font-family: Kashima;
+    src: url(../CSS/Fonts/Kashima.otf);
+}
+
+h1 {
+    font-family: kashima;
+    color: red;
+    font-size: 70px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+h2 {
+    margin-top: 0px;
+    color: red;
+}
+
+h3 {
+    color: red;
+    text-align: center;
+}
+
+
+
 .grid {
     background: white;
     opacity: .2;
