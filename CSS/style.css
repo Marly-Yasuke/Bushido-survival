@@ -24,8 +24,7 @@ h3 {
 
 
 .grid {
-    background: white;
-    opacity: .2;
+    background: #ffffff4f;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr);
@@ -59,3 +58,60 @@ main {
 header {
     text-align: center;
 }
+
+.player {
+    background-image: url(../Img/IMG_9944.jpg);
+    background-size: cover;
+    opacity: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.carte-vitale {
+    background-image: url(../Img/pngwing.com.png);
+    background-size: contain;
+    opacity: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.titre-de-sejour {
+    background-image: url(../Img/pngwing.com.png);
+    background-size: contain;
+    opacity: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.sim-card {
+    background-image: url(../Img/pngwing.com.png);
+    background-size: contain;
+    opacity: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.compte-bancaire {
+    background-image: url(../Img/pngwing.com.png);
+    background-size: contain;
+    opacity: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.apartment {
+    background-image: url(../Img/pngwing.com.png);
+    background-size: contain;
+    opacity: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.job {
+    background-image: url(../Img/pngwing.com.png);
+    background-size: contain;
+    opacity: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+

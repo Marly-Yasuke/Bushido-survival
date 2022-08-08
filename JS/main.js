@@ -4,16 +4,18 @@ const gridColumns = 10;
 const gridRows = 10;
 const cells = [];
 let score = 0;
+let currentPosition = 0;
 
 function startNewGame() {
   createTheGrid();
-  getRandomSelection();
+  displayPlayer()
   distributeCollectibles()
+
 }
 const startButton = document.getElementById('new-game')
 startButton.addEventListener('click', () => {
   startNewGame()
-  createTheGrid()
+
 })
 
 function createTheGrid() {
@@ -26,19 +28,78 @@ function createTheGrid() {
   }
 }
 
+
+
+// This function will display the player
+function displayPlayer() {
+  const myPosition = cells[currentPosition]
+  myPosition.classList.add('player')
+}
+
+function fisherYatesShuffle(arr) {
+  for (let i = arr.length; i > 0; i--) {
+    const j = Math.floor(Math.random() * i)
+    const temp = arr[j]
+    arr[j] = arr[i - 1]
+    arr[i - 1] = temp
+  }
+}
+
+function getRandomSelection(n, array) {
+  const cloned = Array.from(array)
+  fisherYatesShuffle(cloned)
+  const selected = cloned.slice(0, n)
+  return selected
+}
+
+
+
+// this function will distribute collectibles on the board
+function distributeCollectibles() {
+  // iteration 2
+  const randomCells = getRandomSelection(collectibles.length, cells)
+
+  for (let i = 0; i < collectibles.length; i++) {
+    // assign one cell to each collectible
+    collectibles[i].cell = randomCells[i]
+    collectibles[i].display()
+  }
+}
+
+
 // I create an array of item that will be collectibles
+class Collectible {
+  constructor(className) {
+    this.className = className
+    this.cell = null
+    this.isCollected = false
+  }
+  hide() {
+    // reset behaviour
+    this.cell.classList.remove(this.className)
+  }
+  collect() {
+    // iteration 4
+    this.hide()
+    this.isCollected = true
+    // prevent accidental matches
+    this.cell = null
+    inventory.add(this.className)
+  }
+  display() {
+    // iteration 2
+    this.cell.classList.add(this.className)
+  }
+}
+
 const collectibles = [
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-]
+  'carte-vitale',
+  'titre-de-sejour',
+  'sim-card',
+  'compte-bancaire',
+  'apartment',
+  'job',
+].map((c) => new Collectible(c))
 
 // DistributeCollectibles function will randomly display collectibles when launching the game
 
