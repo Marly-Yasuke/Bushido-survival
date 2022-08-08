@@ -1,3 +1,31 @@
+.grid {
+    background: white;
+    opacity: .2;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    height: 600px;
+    width: 600px;
+    border: solid;
+}
+
 body {
     background-image: url(/Img/IMG_4605.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+header {
+    text-align: center;
 }
