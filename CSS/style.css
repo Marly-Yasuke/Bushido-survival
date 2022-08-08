@@ -32,6 +32,11 @@ h3 {
     height: 600px;
     width: 600px;
     border: solid;
+
+}
+
+.cell {
+    border: solid;
 }
 
 body {
