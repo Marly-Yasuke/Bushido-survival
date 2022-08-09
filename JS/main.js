@@ -4,11 +4,44 @@ const gridColumns = 10;
 const gridRows = 10;
 const cells = [];
 let score = 0;
-let currentPosition = 0;
+
+const player = {
+  position: 0,
+  move(direction) {
+    removePlayer()
+    switch (direction) {
+      case 'right':
+        this.position += 1
+        break
+      case 'left':
+        this.position -= 1
+        break
+      case 'up':
+        this.position -= 10
+        break
+      case 'down':
+        this.position += 10
+        break
+    }
+
+    this.display()
+  },
+
+  // This function will display the player
+  display() {
+    const myPosition = cells[this.position]
+    myPosition.classList.add('player')
+  }
+};
+const game = {
+  isStarted: false
+}
+
 
 function startNewGame() {
+  game.isStarted = true;
   createTheGrid();
-  displayPlayer()
+  player.display()
   distributeCollectibles()
 
 }
@@ -30,11 +63,7 @@ function createTheGrid() {
 
 
 
-// This function will display the player
-function displayPlayer() {
-  const myPosition = cells[currentPosition]
-  myPosition.classList.add('player')
-}
+
 
 // to move the player change its current position, then call display player
 
@@ -106,6 +135,7 @@ const collectibles = [
 // DistributeCollectibles function will randomly display collectibles when launching the game
 
 // Keyboard setup
+// !!!check if new game ok!!!
 document.addEventListener('keydown', (event) => {
   if (!game.isStarted) {
     return
@@ -127,6 +157,30 @@ document.addEventListener('keydown', (event) => {
   }
 })
 
+function movePlayer(newPosition) {
+  if (newPosition < 0 || newPosition > 99) {
+    return console.error('Invalid Move!')
+  }
+
+  removePlayer()
+  player.position = newPosition
+  player.display()
+
+  console.log(cells[player.position])
+  if (isItASign(cells[player.position])) {
+    cells[player.position].className = 'cell player'
+    score += 10
+    scoreElement.textContent = score
+    if (score === 120) {
+      winTheGame()
+    }
+  }
+}
+
+function removePlayer() {
+  cells[player.position].classList.remove('player')
+}
+
 //I want to check if the player's current position is on the same one than collectible
 // If it is the case, there is a collision
-// hide collectible and add  to score
+// hide collectible and add  10 to score
