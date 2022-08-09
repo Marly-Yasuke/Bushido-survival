@@ -36,6 +36,8 @@ function displayPlayer() {
   myPosition.classList.add('player')
 }
 
+// to move the player change its current position, then call display player
+
 function fisherYatesShuffle(arr) {
   for (let i = arr.length; i > 0; i--) {
     const j = Math.floor(Math.random() * i)
@@ -124,3 +126,7 @@ document.addEventListener('keydown', (event) => {
       break
   }
 })
+
+//I want to check if the player's current position is on the same one than collectible
+// If it is the case, there is a collision
+// hide collectible and add  to score
