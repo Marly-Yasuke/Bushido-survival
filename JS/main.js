@@ -8,19 +8,28 @@ let score = 0;
 const player = {
   position: 0,
   move(direction) {
+
+
+
     removePlayer()
     switch (direction) {
       case 'right':
-        this.position += 1
+        if (movePlayer(this.position + 1))
+          this.position += 1
         break
       case 'left':
-        this.position -= 1
+        if (movePlayer(this.position - 1))
+          this.position -= 1
         break
       case 'up':
-        this.position -= 10
+        if (movePlayer(this.position - 10)) {
+          this.position -= 10
+        }
         break
       case 'down':
-        this.position += 10
+        if (movePlayer(this.position + 10)) {
+          this.position += 10
+        }
         break
     }
 
@@ -158,8 +167,9 @@ document.addEventListener('keydown', (event) => {
 })
 
 function movePlayer(newPosition) {
+  console.log(newPosition)
   if (newPosition < 0 || newPosition > 99) {
-    return console.error('Invalid Move!')
+    return false
   }
 
   removePlayer()
@@ -167,14 +177,14 @@ function movePlayer(newPosition) {
   player.display()
 
   console.log(cells[player.position])
-  if (isItASign(cells[player.position])) {
-    cells[player.position].className = 'cell player'
-    score += 10
-    scoreElement.textContent = score
-    if (score === 120) {
-      winTheGame()
-    }
-  }
+  // if (isItASign(cells[player.position])) {
+  //   cells[player.position].className = 'cell player'
+  //   score += 10
+  //   scoreElement.textContent = score
+  //   if (score === 120) {
+  //     winTheGame()
+  //   }
+  // }
 }
 
 function removePlayer() {
@@ -184,3 +194,11 @@ function removePlayer() {
 //I want to check if the player's current position is on the same one than collectible
 // If it is the case, there is a collision
 // hide collectible and add  10 to score
+
+
+
+// to check if the player is outside the grid
+// if player < grid length he is out
+// if player > grid length he is out
+// if player > grid height he is out
+// if player < grid height he is out
