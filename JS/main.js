@@ -3,6 +3,7 @@ const gridElement = document.querySelector('.grid')
 const gridColumns = 10;
 const gridRows = 10;
 const cells = [];
+const shurikens = []
 let scoreElement = document.getElementById('score')
 let score = 0;
 
@@ -55,8 +56,18 @@ function startNewGame() {
   createTheGrid();
   player.display()
   distributeCollectibles()
+  shurikens.push(new Shuriken())
+  setInterval(moveShurikens, 350)
+
+
   // added detect collision to be able to collect collectibles
 
+}
+
+function moveShurikens() {
+  shurikens.forEach(shuriken => {
+    shuriken.move()
+  })
 }
 const startButton = document.getElementById('new-game')
 startButton.addEventListener('click', () => {
@@ -110,6 +121,37 @@ function distributeCollectibles() {
   }
 }
 
+/**
+ * Class for shurikens
+ */
+class Shuriken {
+  constructor() {
+    this.className = 'shuriken'
+    this.cell = this.getRandomColumn()
+  }
+
+  getRandomColumn() {
+    return cells[Math.floor(Math.random() * 10) + 90]
+
+  }
+
+  hide() {
+    this.cell.classList.remove('shuriken')
+  }
+  show() {
+    this.cell.classList.add('shuriken')
+  }
+  move() {
+    this.hide()
+    const index = Number(this.cell.dataset.index)
+    if (index - 10 < 0) {
+      this.cell = cells[index + 90]
+    } else {
+      this.cell = cells[index - 10]
+    }
+    this.show()
+  }
+}
 
 // I create an array of item that will be collectibles
 class Collectible {
@@ -159,6 +201,7 @@ function _detectCollisions(array) {
     foundCollectible.collect()
     score = score + 10;
     scoreElement.textContent = score
+    shurikens.push(new Shuriken())
     console.log(scoreElement, score);
   }
 }
