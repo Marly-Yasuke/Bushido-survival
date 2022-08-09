@@ -115,3 +115,19 @@ header {
     background-repeat: no-repeat;
 }
 
+.shuriken {
+    background-image: url(../Img/naruto\ shuriken\ png\ -\ Imagem\ png\ para\ baixar\ grátis.png);
+    background-size: cover;
+    background-position: center;
+    animation: turn 1s infinite linear
+}
+
+@keyframes turn {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+

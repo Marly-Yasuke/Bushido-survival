@@ -3,7 +3,9 @@ const gridElement = document.querySelector('.grid')
 const gridColumns = 10;
 const gridRows = 10;
 const cells = [];
+let scoreElement = document.getElementById('score')
 let score = 0;
+
 
 const player = {
   position: 0,
@@ -33,6 +35,7 @@ const player = {
         break
     }
 
+    _detectCollisions(collectibles)
     this.display()
   },
 
@@ -52,6 +55,7 @@ function startNewGame() {
   createTheGrid();
   player.display()
   distributeCollectibles()
+  // added detect collision to be able to collect collectibles
 
 }
 const startButton = document.getElementById('new-game')
@@ -123,15 +127,14 @@ class Collectible {
     this.hide()
     this.isCollected = true
     // prevent accidental matches
-    this.cell = null
-    inventory.add(this.className)
+    //this.cell = null
+    //inventory.add(this.className)
   }
   display() {
     // iteration 2
     this.cell.classList.add(this.className)
   }
 }
-
 const collectibles = [
   'carte-vitale',
   'titre-de-sejour',
@@ -140,6 +143,27 @@ const collectibles = [
   'apartment',
   'job',
 ].map((c) => new Collectible(c))
+// ******Check what find can be related to *******
+// make this function work
+// detect collision and collect if there is any
+function _detectCollisions(array) {
+  // iteration 4
+  // how do we detect collisions with items
+  console.log(array)
+  const foundCollectible = array.find(
+    (collectible) => {
+      return Number(collectible.cell.dataset.index) === player.position && !collectible.isCollected
+    })
+  console.log(foundCollectible)
+  if (foundCollectible) {
+    foundCollectible.collect()
+    score = score + 10;
+    scoreElement.textContent = score
+    console.log(scoreElement, score);
+  }
+}
+
+
 
 // DistributeCollectibles function will randomly display collectibles when launching the game
 
@@ -190,15 +214,3 @@ function movePlayer(newPosition) {
 function removePlayer() {
   cells[player.position].classList.remove('player')
 }
-
-//I want to check if the player's current position is on the same one than collectible
-// If it is the case, there is a collision
-// hide collectible and add  10 to score
-
-
-
-// to check if the player is outside the grid
-// if player < grid length he is out
-// if player > grid length he is out
-// if player > grid height he is out
-// if player < grid height he is out
