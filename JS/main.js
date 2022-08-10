@@ -54,6 +54,11 @@ const game = {
 }
 
 
+function hideStart() {
+  startButton.style.visibility = 'hidden';
+}
+
+
 function startNewGame() {
   game.isStarted = true;
   createTheGrid();
@@ -61,6 +66,7 @@ function startNewGame() {
   distributeCollectibles()
   shurikens.push(new Shuriken())
   setInterval(moveShurikens, 100)
+  hideStart()
 
 }
 
