@@ -1,11 +1,14 @@
 let newGame = document.getElementById("new-game");
 const gridElement = document.querySelector('.grid')
 const gridColumns = 10;
+const restartButton = document.getElementById('restart')
+const gameOver = document.getElementById('game-over')
 const gridRows = 10;
 const cells = [];
 const shurikens = []
 let scoreElement = document.getElementById('score')
 let score = 0;
+
 
 
 const player = {
@@ -264,6 +267,17 @@ function removePlayer() {
 function _detectShurikenCollisions() {
   console.log(shurikens[0].cell.dataset.index, player.position);
   shurikens.forEach(shuriken => {
-    if (parseInt(shuriken.cell.dataset.index) === player.position) alert('Game Over, You died on the battlefield')
+    if (parseInt(shuriken.cell.dataset.index) === player.position) {
+      gameOver.classList.toggle("hidden");
+    }
+
   })
+
 }
+// call the section game-over and restart button
+// hidden by default
+// toogle game-over it when collision
+// ad eventlistener to button that restarts the game
+restart.addEventListener('click', () => {
+  startNewGame()
+})
