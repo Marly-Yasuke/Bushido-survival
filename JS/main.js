@@ -46,7 +46,7 @@ const player = {
 
   // This function will display the player
   display() {
-    const myPosition = cells[this.position]
+    let myPosition = cells[this.position]
     myPosition.classList.add('player')
   }
 };
@@ -59,6 +59,7 @@ function hideStart() {
   startButton.style.visibility = 'hidden';
 }
 
+let intervalId
 
 function startNewGame() {
   game.isStarted = true;
@@ -67,7 +68,7 @@ function startNewGame() {
   distributeCollectibles()
   shurikens.push(new Shuriken())
   // ******SET UP SPEED 100**************
-  setInterval(moveShurikens, 500)
+  intervalId = setInterval(moveShurikens, 100)
   hideStart()
 
 
@@ -279,7 +280,7 @@ function removePlayer() {
 // *******shuriken collision setup*****
 // doesn't work
 function _detectShurikenCollisions() {
-  console.log(shurikens[0].cell.dataset.index, player.position);
+
   shurikens.forEach(shuriken => {
     if (parseInt(shuriken.cell.dataset.index) === player.position) {
       gameOver.classList.remove("hidden");
@@ -292,9 +293,7 @@ function _detectShurikenCollisions() {
 // hidden by default
 // toogle game-over it when collision
 // ad eventlistener to button that restarts the game
-restart.addEventListener('click', () => {
-  startNewGame()
-})
+
 
 
 
@@ -310,3 +309,45 @@ restart.addEventListener('click', () => {
 
 
 // function displayWin()
+
+restartButton.addEventListener('click', () => {
+  resetGame()
+})
+
+
+function resetGame() {
+  game.isStarted = true;
+  removePlayer()
+  player.position = 0;
+  player.display()
+  // do removeCollectible function
+  removeCollectibleNewGame()
+  distributeCollectibles()
+  removeShurikenNewGame()
+  shurikens.push(new Shuriken())
+  intervalId = setInterval(moveShurikens, 100)
+  score = 0;
+  scoreElement.textContent = score
+  if (score === 60) {
+    youWin.classList.add('hidden');
+  } else {
+    gameOver.classList.add('hidden');
+  }
+
+
+}
+
+
+function removeShurikenNewGame() {
+  clearInterval(intervalId)
+  for (let i = 0; i < shurikens.length; i++) {
+    shurikens[i].hide()
+  }
+  shurikens = [];
+}
+
+function removeCollectibleNewGame() {
+  for (let i = 0; i < collectibles.length; i++) {
+    collectibles[i].hide()
+  }
+}
