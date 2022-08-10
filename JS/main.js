@@ -57,10 +57,7 @@ function startNewGame() {
   player.display()
   distributeCollectibles()
   shurikens.push(new Shuriken())
-  setInterval(moveShurikens, 350)
-
-
-  // added detect collision to be able to collect collectibles
+  setInterval(moveShurikens, 250)
 
 }
 
@@ -68,6 +65,10 @@ function moveShurikens() {
   shurikens.forEach(shuriken => {
     shuriken.move()
   })
+  // !!!!!detect collision when shuriken moves
+  // !!!!initialized line 260/266
+  _detectShurikenCollisions()
+  // !!!! check function above
 }
 const startButton = document.getElementById('new-game')
 startButton.addEventListener('click', () => {
@@ -257,3 +258,12 @@ function movePlayer(newPosition) {
 function removePlayer() {
   cells[player.position].classList.remove('player')
 }
+
+// *******shuriken collision setup*****
+// doesn't work
+// function _detectShurikenCollisions() {
+//   console.log(shurikens[0].cell.dataset.index, player.position);
+//   shurikens.forEach(shuriken => {
+//       if (parseInt(shurikens.cell.dataset.index) === player.position) alert('Game Over')
+//   }
+// }
