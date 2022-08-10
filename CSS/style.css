@@ -136,11 +136,11 @@ header {
 
 #game-over {
     position: fixed;
-background: black;
-width: 50vw;
-left: 25vw;
-height: 20vh;
-color: white;
+    background: black;
+    width: 50vw;
+    left: 25vw;
+    height: 20vh;
+    color: white;
 }
 
 .hidden {

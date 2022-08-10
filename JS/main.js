@@ -60,7 +60,7 @@ function startNewGame() {
   player.display()
   distributeCollectibles()
   shurikens.push(new Shuriken())
-  setInterval(moveShurikens, 250)
+  setInterval(moveShurikens, 100)
 
 }
 
@@ -268,7 +268,7 @@ function _detectShurikenCollisions() {
   console.log(shurikens[0].cell.dataset.index, player.position);
   shurikens.forEach(shuriken => {
     if (parseInt(shuriken.cell.dataset.index) === player.position) {
-      gameOver.classList.toggle("hidden");
+      gameOver.classList.remove("hidden");
     }
 
   })
