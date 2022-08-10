@@ -3,9 +3,10 @@ const gridElement = document.querySelector('.grid')
 const gridColumns = 10;
 const restartButton = document.getElementById('restart')
 const gameOver = document.getElementById('game-over')
+const youWin = document.getElementById('win')
 const gridRows = 10;
 const cells = [];
-const shurikens = []
+let shurikens = []
 let scoreElement = document.getElementById('score')
 let score = 0;
 
@@ -65,8 +66,10 @@ function startNewGame() {
   player.display()
   distributeCollectibles()
   shurikens.push(new Shuriken())
-  setInterval(moveShurikens, 100)
+  // ******SET UP SPEED 100**************
+  setInterval(moveShurikens, 500)
   hideStart()
+
 
 }
 
@@ -213,10 +216,15 @@ function _detectCollisions(array) {
     scoreElement.textContent = score
     shurikens.push(new Shuriken())
     console.log(scoreElement, score);
+    if (score === 60) {
+      youWin.classList.remove("hidden");
+      shurikens = [];
+
+    }
+
   }
+
 }
-
-
 
 // DistributeCollectibles function will randomly display collectibles when launching the game
 
@@ -287,3 +295,18 @@ function _detectShurikenCollisions() {
 restart.addEventListener('click', () => {
   startNewGame()
 })
+
+
+
+// this.score.forEach(move){
+//   if (this.score === 60) {
+//     youWin.classList.remove("hidden");
+//   }
+// }
+
+
+// create a function that comes true when every value of the arry is true
+// youWin.classList.remove("hidden");
+
+
+// function displayWin()
