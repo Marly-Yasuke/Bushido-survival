@@ -261,9 +261,9 @@ function removePlayer() {
 
 // *******shuriken collision setup*****
 // doesn't work
-// function _detectShurikenCollisions() {
-//   console.log(shurikens[0].cell.dataset.index, player.position);
-//   shurikens.forEach(shuriken => {
-//       if (parseInt(shurikens.cell.dataset.index) === player.position) alert('Game Over')
-//   }
-// }
+function _detectShurikenCollisions() {
+  console.log(shurikens[0].cell.dataset.index, player.position);
+  shurikens.forEach(shuriken => {
+    if (parseInt(shuriken.cell.dataset.index) === player.position) alert('Game Over, You died on the battlefield')
+  })
+}
