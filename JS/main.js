@@ -220,6 +220,7 @@ function _detectCollisions(array) {
     console.log(scoreElement, score);
     if (score === 60) {
       youWin.classList.remove("hidden");
+      resetGame()
     }
 
   }
@@ -283,7 +284,8 @@ function _detectShurikenCollisions() {
   shurikens.forEach(shuriken => {
     if (parseInt(shuriken.cell.dataset.index) === player.position) {
       gameOver.classList.remove("hidden");
-      clearInterval(intervalId)
+      
+      resetGame()
     }
 
   })
@@ -310,41 +312,47 @@ function _detectShurikenCollisions() {
 
 // function displayWin()
 
-winRestart.addEventListener('click', () => {
-  resetGame()
-  youWin.classList.add('hidden');
+// winRestart.addEventListener('click', () => {
+//   resetGame()
+//   youWin.classList.add('hidden');
 
-})
+// })
 
-looseRestart.addEventListener('click', () => {
-  resetGame()
-  gameOver.classList.add('hidden');
-})
+// looseRestart.addEventListener('click', () => {
+//   resetGame()
+//   gameOver.classList.add('hidden');
+// })
 
 
 function resetGame() {
-  game.isStarted = true;
   removePlayer()
   player.position = 0;
-  player.display()
   // do removeCollectible function
   removeCollectibleNewGame()
-  distributeCollectibles()
   removeShurikenNewGame()
-  shurikens.push(new Shuriken())
-
-  intervalId = setInterval(moveShurikens, 100)
   score = 0;
   scoreElement.textContent = score
-  // if (score === 60) {
-  //   youWin.classList.add('hidden');
-  // } else {
-  //   gameOver.classList.add('hidden');
-  // }
-
+}
+ 
+function startGame() {
+  game.isStarted = true;
+  player.display()
+  distributeCollectibles()
+  shurikens.push(new Shuriken())
+  intervalId = setInterval(moveShurikens, 100)
 
 }
-
+ winRestart.addEventListener('click', () => {
+      startGame()
+      youWin.classList.add('hidden');
+      gameOver.classList.add('hidden');
+      
+    })
+    looseRestart.addEventListener('click', () => {
+      startGame()
+      youWin.classList.add('hidden');
+      gameOver.classList.add('hidden');
+    })
 
 function removeShurikenNewGame() {
   clearInterval(intervalId)
