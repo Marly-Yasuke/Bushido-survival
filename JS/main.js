@@ -220,8 +220,6 @@ function _detectCollisions(array) {
     console.log(scoreElement, score);
     if (score === 60) {
       youWin.classList.remove("hidden");
-      shurikens = [];
-
     }
 
   }
@@ -315,6 +313,7 @@ function _detectShurikenCollisions() {
 winRestart.addEventListener('click', () => {
   resetGame()
   youWin.classList.add('hidden');
+
 })
 
 looseRestart.addEventListener('click', () => {
@@ -333,6 +332,7 @@ function resetGame() {
   distributeCollectibles()
   removeShurikenNewGame()
   shurikens.push(new Shuriken())
+
   intervalId = setInterval(moveShurikens, 100)
   score = 0;
   scoreElement.textContent = score
