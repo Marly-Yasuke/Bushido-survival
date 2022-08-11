@@ -18,11 +18,15 @@ footer h3 {
 
 header h1 {
     margin: 0px;
-    height: 60px;
+    height: 50px;
 }
 
 header h2 {
     margin: 0px;
+}
+
+header {
+    height: 126px;
 }
 
 
@@ -200,4 +204,46 @@ header {
 
 .hidden {
     display: none;
+}
+
+#restart {
+    width: 150px;
+    height: 25px;
+    cursor: pointer;
+    background: rgb(109, 109, 109);
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444, inset -5px -5px 10px #222;
+    color: #222;
+    font-size: 16px;
+}
+
+#restart:hover {
+    box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222, inset -5px -5px 10px #444;
+    font-size: 15px;
+    transition: 500ms;
+    color: #f07171;
+    text-shadow: 0px 0px 10px #f07171;
+}
+
+#new-game {
+    width: 150px;
+    height: 25px;
+    cursor: pointer;
+    background: rgb(109, 109, 109);
+    margin: 0px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444, inset -5px -5px 10px #222;
+    color: #222;
+    font-size: 16px;
+}
+
+#new-game:hover {
+    box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222, inset -5px -5px 10px #444;
+    font-size: 15px;
+    transition: 500ms;
+    color: #f07171;
+    text-shadow: 0px 0px 10px #f07171;
 }
