@@ -11,6 +11,21 @@ h1 {
     margin-top: 10px;
 }
 
+footer h3 {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+header h1 {
+    margin: 0px;
+    height: 60px;
+}
+
+header h2 {
+    margin: 0px;
+}
+
+
 h2 {
     margin-top: 0px;
     color: red;
@@ -42,6 +57,7 @@ body {
     background-image: url(../Img/IMG_4605.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    margin: 0px;
 }
 
 main {
@@ -136,20 +152,50 @@ header {
 
 #game-over {
     position: fixed;
-    background: black;
+    /* background: black; */
     width: 50vw;
     left: 25vw;
-    height: 20vh;
+    height: 65vh;
     color: white;
+    text-align: center;
+    background: url(../Img/IMG_4492.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#game-over h2 {
+    font-family: kashima;
+    font-size: 60px;
+    margin-bottom: 0px;
+}
+
+#game-over p {
+    margin-top: 0px;
 }
 
 #win {
     position: fixed;
-    background: black;
+    /* background: black; */
     width: 50vw;
     left: 25vw;
-    height: 20vh;
+    height: 65vh;
     color: white;
+    text-align: center;
+    margin-bottom: 0px;
+    background-image: url(../Img/IMG_9947.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+#win h2 {
+    font-family: kashima;
+    font-size: 60px;
+    margin-bottom: 0px;
+}
+
+#win p {
+    margin-top: 0px;
 }
 
 .hidden {
