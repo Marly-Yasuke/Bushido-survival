@@ -1,7 +1,22 @@
+/* ********@@@@@@@******** */
+
 @font-face {
     font-family: Kashima;
     src: url(../CSS/Fonts/Kashima.otf);
 }
+
+@keyframes turn {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* **********TAGS******** */
+
 
 h1 {
     font-family: kashima;
@@ -42,20 +57,7 @@ h3 {
 
 
 
-.grid {
-    background: #ffffff4f;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    height: 600px;
-    width: 600px;
-    border: solid;
 
-}
-
-.cell {
-    border: solid;
-}
 
 body {
     background-image: url(../Img/IMG_4605.jpg);
@@ -77,6 +79,24 @@ main {
 
 header {
     text-align: center;
+}
+
+
+/* ********CLASES****** */
+
+.grid {
+    background: #ffffff4f;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    height: 600px;
+    width: 600px;
+    border: solid;
+
+}
+
+.cell {
+    border: solid;
 }
 
 .player {
@@ -144,15 +164,17 @@ header {
 
 }
 
-@keyframes turn {
-    0% {
-        transform: rotate(0deg);
-    }
 
-    100% {
-        transform: rotate(360deg);
-    }
+
+
+
+.hidden {
+    display: none;
 }
+
+
+/* *******IDS******** */
+
 
 #game-over {
     position: fixed;
@@ -200,10 +222,6 @@ header {
 
 #win p {
     margin-top: 0px;
-}
-
-.hidden {
-    display: none;
 }
 
 #winRestart {
