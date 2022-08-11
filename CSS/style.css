@@ -206,7 +206,7 @@ header {
     display: none;
 }
 
-#restart {
+#winRestart {
     width: 150px;
     height: 25px;
     cursor: pointer;
@@ -219,7 +219,28 @@ header {
     font-size: 16px;
 }
 
-#restart:hover {
+#winRestart:hover {
+    box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222, inset -5px -5px 10px #444;
+    font-size: 15px;
+    transition: 500ms;
+    color: #f07171;
+    text-shadow: 0px 0px 10px #f07171;
+}
+
+#looseRestart {
+    width: 150px;
+    height: 25px;
+    cursor: pointer;
+    background: rgb(109, 109, 109);
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444, inset -5px -5px 10px #222;
+    color: #222;
+    font-size: 16px;
+}
+
+#looseRestart:hover {
     box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222, inset -5px -5px 10px #444;
     font-size: 15px;
     transition: 500ms;

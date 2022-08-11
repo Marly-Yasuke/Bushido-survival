@@ -1,7 +1,8 @@
 let newGame = document.getElementById("new-game");
 const gridElement = document.querySelector('.grid')
 const gridColumns = 10;
-const restartButton = document.getElementById('restart')
+const looseRestart = document.getElementById('looseRestart')
+const winRestart = document.getElementById('winRestart')
 const gameOver = document.getElementById('game-over')
 const youWin = document.getElementById('win')
 const gridRows = 10;
@@ -284,6 +285,7 @@ function _detectShurikenCollisions() {
   shurikens.forEach(shuriken => {
     if (parseInt(shuriken.cell.dataset.index) === player.position) {
       gameOver.classList.remove("hidden");
+      clearInterval(intervalId)
     }
 
   })
@@ -310,8 +312,14 @@ function _detectShurikenCollisions() {
 
 // function displayWin()
 
-restartButton.addEventListener('click', () => {
+winRestart.addEventListener('click', () => {
   resetGame()
+  youWin.classList.add('hidden');
+})
+
+looseRestart.addEventListener('click', () => {
+  resetGame()
+  gameOver.classList.add('hidden');
 })
 
 
@@ -328,11 +336,11 @@ function resetGame() {
   intervalId = setInterval(moveShurikens, 100)
   score = 0;
   scoreElement.textContent = score
-  if (score === 60) {
-    youWin.classList.add('hidden');
-  } else {
-    gameOver.classList.add('hidden');
-  }
+  // if (score === 60) {
+  //   youWin.classList.add('hidden');
+  // } else {
+  //   gameOver.classList.add('hidden');
+  // }
 
 
 }
@@ -349,5 +357,18 @@ function removeShurikenNewGame() {
 function removeCollectibleNewGame() {
   for (let i = 0; i < collectibles.length; i++) {
     collectibles[i].hide()
+    collectibles[i].isCollected = false
   }
 }
+
+// let startTime = 82;
+
+const myAudio = document.getElementById('audio');
+console.log(myAudio);
+myAudio.currentTime = 83
+// myAudio.addEventListener('canplaythrough', function () {
+
+//   // start it at the start time
+//   this.currentTime = startTime;
+//   this.play();
+// })
