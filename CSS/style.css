@@ -15,6 +15,14 @@
     }
 }
 
+/* update */
+/* setting up grid size according to screen size */
+@media screen and (orientation: landscape) and (max-width: 1000px) {
+.grid {
+    height: 40px;
+    width: 400px;
+}
+}
 /* **********TAGS******** */
 
 

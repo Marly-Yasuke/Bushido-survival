@@ -194,12 +194,12 @@ startButton.addEventListener('click', () => {
   startNewGame()
 
 })
-
-Try to use touch start to make the game start when touching
-startButton.addEventListener('touchend', (event)=>{
-  startGame()
-  console.log('it works')
+// update to check if when touching start button
+startButton.addEventListener("touchstart", e =>{
+  console.log(e)
 })
+
+
 
 
 class Shuriken {
