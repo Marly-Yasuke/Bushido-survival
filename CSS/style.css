@@ -105,6 +105,7 @@ header {
     border: solid;
 
 }
+
 .gamepad {
     display: flex;
     flex-wrap: nowrap;
@@ -115,6 +116,8 @@ header {
     height: 80vh;
     overflow: auto;
     flex-direction: row;
+
+    margin-left: 18%;
 }
 
 .arrows{
@@ -201,6 +204,9 @@ header {
 
 /* *******IDS******** */
 
+#column {
+    flex-direction: column;
+}
 
 #game-over {
     position: fixed;
