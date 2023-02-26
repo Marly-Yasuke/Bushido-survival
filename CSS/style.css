@@ -17,12 +17,15 @@
 
 /* update */
 /* setting up grid size according to screen size */
-@media screen and (orientation: landscape) and (max-width: 1000px) {
-.grid {
-    height: 40px;
-    width: 400px;
-}
-}
+@media screen and (orientation: portrait) and (max-width: 500px), (max-height: 1000px) {
+    .main {
+     margin-top: 200px;
+    }
+   #rules {
+    margin-top: 100px;
+   }
+
+  }
 /* **********TAGS******** */
 
 
@@ -102,7 +105,22 @@ header {
     border: solid;
 
 }
+.gamepad {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 65%;
+    height: 80vh;
+    overflow: auto;
+    flex-direction: row;
+}
 
+.arrows{
+    height: 100px;
+    width: 100px;
+}
 .cell {
     border: solid;
 }

@@ -13,6 +13,10 @@ const cells = [];
 let shurikens = []
 let scoreElement = document.getElementById('score')
 let score = 0;
+const rightArrow = document.getElementById('right-arrow')
+const leftArrow = document.getElementById('left-arrow')
+const upArrow = document.getElementById('up-arrow')
+const downArrow = document.getElementById('down-arrow')
 
 
 
@@ -305,6 +309,33 @@ document.addEventListener('keydown', (event) => {
       player.move('right')
       break
   }
+})
+
+upArrow.addEventListener('touchstart', (event) =>{
+  if (!game.isStarted) {
+    return
+  }
+  player.move('up')
+})
+
+downArrow.addEventListener('touchstart', (event) =>{
+  if (!game.isStarted) {
+    return
+  }
+  player.move('down')
+})
+
+leftArrow.addEventListener('touchstart', (event) =>{
+  if (!game.isStarted) {
+    return
+  }
+  player.move('left')
+})
+rightArrow.addEventListener('touchstart', (event) =>{
+  if (!game.isStarted) {
+    return
+  }
+  player.move('right')
 })
 
 function _detectShurikenCollisions() {
